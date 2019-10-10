@@ -7,13 +7,13 @@ export default function Pickupsaving(props){
     <p> Picking up your order to save some money</p>
 </Tooltip>;
     return (
-        <Row>
+        <Row className="details-row">
             <Col md={6}>
-                <OverlayTrigger>
+                <OverlayTrigger placement="bottom" overlay={tooltip}>
                     <div style={styles.pickingSaving}>Pickup Saving</div>
                 </OverlayTrigger>
             </Col>
-            <Col style={styles.totalSaving}>${pickingSaving}</Col>
+            <Col style={styles.totalSaving} md={6}>${pickingSaving}</Col>
         </Row>
 
 
@@ -23,6 +23,10 @@ export default function Pickupsaving(props){
 const styles = {
     totalSaving:{
         fontWeight:"800",
-        color:"red"
+        color:"red",
+        textAlign:"right"
+    },
+    pickingSaving:{
+        textDecoration:'underline'
     }
 }

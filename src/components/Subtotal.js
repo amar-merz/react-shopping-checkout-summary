@@ -5,9 +5,9 @@ export default class Subtotal extends React.Component{
         const {price} = this.props;
         return(
             <React.Fragment>
-                <Row>
+                <Row className="details-row">
                     <Col md={6}>Sub total</Col>
-                    <Col md={6} >${price}</Col>
+                    <Col md={6} style={{ textAlign:"right"}} >${price}</Col>
                 </Row>
                 
             </React.Fragment>
