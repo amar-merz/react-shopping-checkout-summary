@@ -32,6 +32,7 @@ class PromoCode extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    //dispatch an action with code="REDUX50"
     this.props.getTotalAfterPromo(this.textInput.current.value);
   };
 
@@ -75,13 +76,11 @@ const styles = {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    //handleChange: e => dispatch({ type: "PROMO_CODE_ONCHANGE", e:e }),
     getTotalAfterPromo: codeVal => dispatch({ type: "PROMO_CODE_ONSUBMIT", payload: codeVal })
   };
 };
 const mapStateToProps = state => {
   return {
-    //codePromo: state.codePromo,
     total: state.total
   };
 };

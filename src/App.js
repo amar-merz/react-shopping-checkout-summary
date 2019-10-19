@@ -15,26 +15,12 @@ class App extends React.Component {
       totalEstimated: pricingData.data.totalEst
     };
   }
-  // Calculation of est.taxes and the total price
-  // getTotalPrice = () => {
-  //   const { price, taxes, pickupSaving } = pricingData.data;
-  //   // const { total } = this.state;
-  //   let est_taxes = ((price + pickupSaving) * taxes) / 100;
-  //   let total = price + pickupSaving + est_taxes;
-  // //   this.setState({
-  // //     taxes: est_taxes,
-  // //     total: total
-  // //   });
-  // // };
 
+  //  function to pass to codePromo Child to get back totalEst after discount
   gettotalPriceAfterPromo = totalAfterPromo => {
     this.setState({
       totalEstimated: totalAfterPromo
     });
-  };
-
-  componentDidMount = () => {
-    //this.getTotalPrice();
   };
 
   render() {
