@@ -16,7 +16,7 @@ class App extends React.Component {
     };
   }
 
-  //  function to pass to codePromo Child to get back totalEst after discount
+  // Get back totalEst from codePromo component after discount
   gettotalPriceAfterPromo = totalAfterPromo => {
     this.setState({
       totalEstimated: totalAfterPromo
