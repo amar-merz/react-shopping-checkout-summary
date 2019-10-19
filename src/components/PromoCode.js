@@ -1,12 +1,15 @@
 import React from "react";
 import { Accordion, Form, AccordionToggle, Button, AccordionCollapse } from "react-bootstrap";
+import { connect } from "react-redux";
 
-export default class PromoCode extends React.Component {
+class PromoCode extends React.Component {
   constructor(props) {
     super(props);
+
+    this.textInput = React.createRef();
     this.state = {
-      open: true,
-      text: "Enter Code Promo +"
+      open: false,
+      text: "Enter Code Prom +"
     };
   }
   showHidePromoCode = () => {
@@ -27,8 +30,15 @@ export default class PromoCode extends React.Component {
         break;
     }
   };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.getTotalAfterPromo(this.textInput.current.value);
+  };
+
   render() {
     const { open, text } = this.state;
+    //pass the props "total" to the parent App
+    this.props.gettotalPriceAfterPromo(this.props.total);
     return (
       <Accordion defaultActiveKey={open}>
         <AccordionToggle as={Button} onClick={this.showHidePromoCode} variant="link" eventKey="0">
@@ -39,9 +49,15 @@ export default class PromoCode extends React.Component {
             <Form>
               <Form.Group controlId="formPromoCode">
                 <Form.Label>Promo code</Form.Label>
-                <Form.Control type="email" placeholder="Enter Promo Code" />
+                <Form.Control ref={this.textInput} type="text" placeholder="Enter Promo Code" />
               </Form.Group>
-              <Button style={styles.button} variant="success" block type="submit">
+              <Button
+                style={styles.button}
+                onClick={this.handleSubmit}
+                variant="success"
+                block
+                type="submit"
+              >
                 Submit
               </Button>
             </Form>
@@ -57,3 +73,20 @@ const styles = {
     borderRadius: "1.6em"
   }
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    //handleChange: e => dispatch({ type: "PROMO_CODE_ONCHANGE", e:e }),
+    getTotalAfterPromo: codeVal => dispatch({ type: "PROMO_CODE_ONSUBMIT", payload: codeVal })
+  };
+};
+const mapStateToProps = state => {
+  return {
+    //codePromo: state.codePromo,
+    total: state.total
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PromoCode);

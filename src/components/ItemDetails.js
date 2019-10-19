@@ -29,7 +29,7 @@ export default class itemDetails extends Component {
   };
   render() {
     const { text, open } = this.state;
-    const { total } = this.props;
+    const { totalEstimated } = this.props;
     return (
       <Accordion defaultActiveKey={open}>
         <Accordion.Toggle as={Button} onClick={this.showHideDetails} variant="link" eventKey="0">
@@ -56,10 +56,10 @@ export default class itemDetails extends Component {
                 </p>
                 <Row>
                   <Col md={6}>
-                    <strong>{total}</strong>
+                    <strong>{totalEstimated}</strong>
                     <br />
                     <strong>
-                      <s>{total}</s>
+                      <s>{totalEstimated}</s>
                     </strong>
                   </Col>
                   <Col md={6}>Qte:1</Col>
